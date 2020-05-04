@@ -83,7 +83,7 @@ public class MyLinkedList {
 		//get the original head link
 		MyLink originalHead = head;
 
-		//set the head link of the link to the new passed in link
+		//set the head link of the list to the new passed in link
 		this.head = newlink;
 
 		//set nextLink of the newlink to the original head
@@ -102,22 +102,29 @@ public class MyLinkedList {
 		//check that list is not empty.
 		if(!isEmpty()) {
 			//start from head link
-			MyLink currentlink = head;
+			MyLink currentLink = head;
 
 			//traverse the link
-			while(currentlink.getNextLink()!=null) {
+			while(currentLink.getNextLink()!=null) {
 
-				//check if linkId is the same as passed in Id
-				if(currentlink.getLinkId() == linkId) {
+				//check if linkId is the same as passed in Id for current link
+				if(currentLink.getLinkId() == linkId) {
 
 					//set nextLink of passed in insert link to the nextLink of the found link
-					linkToInsert.setNextlink(currentlink.getNextLink());
+					linkToInsert.setNextlink(currentLink.getNextLink());
 
-					//sent currentlink.nextHead to be the passed in link
-					currentlink.setNextlink(linkToInsert);			
+					//set currentlink.nextHead to be the passed in link
+					currentLink.setNextlink(linkToInsert);	
+					break;
+				}else if(currentLink.getNextLink().getLinkId() == linkId){ 
+					//check if the next link is the matching one.
+					currentLink.getNextLink().setNextlink(linkToInsert);
+					break;
+				}else {
+					//go to next link if nothing matching
+					currentLink = currentLink.getNextLink();
 				}
-				//go to next link if not matching
-				currentlink = currentlink.getNextLink();
+				
 			}
 
 			incrementCounter();

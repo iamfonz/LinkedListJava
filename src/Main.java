@@ -19,9 +19,47 @@ public class Main{
 
 	public static void main(String[] args) {
 
-		printHeader();
-		linkedListBuilderUi();
+		
+		//linkedListBuilderUi();
+		//test1();
+		test2();
 
+	}
+	
+	private static void test1() {
+		System.out.println("Start of test1 method!");
+		linkedList.insertFirst(new MyLink(11, 1.9));
+		linkedList.insertFirst(new MyLink(22, 2.9));
+		linkedList.insertFirst(new MyLink(33, 3.9));
+		linkedList.insertFirst(new MyLink(44, 4.9));
+		displayLinkedList();
+		System.out.println("Find ID 33:\n" + linkedList.findLink(33).toString());
+		System.out.println("Delete Last Link: " + linkedList.deleteLast().toString());
+		displayLinkedList();
+		System.out.println("Insert after Id 44");
+		linkedList.insertAfter(new MyLink(55, 5.9), 44);
+		displayLinkedList();
+		System.out.println("End of test1 method!");
+		
+	}
+	
+	private static void test2() {
+		System.out.println("Start of test2 method!");
+		linkedList.insertFirst(new MyLink(77, 7.9));
+		linkedList.insertFirst(new MyLink(88, 8.9));
+		linkedList.insertFirst(new MyLink(99, 9.9));
+		displayLinkedList();
+		if(linkedList.findLink(55) != null) {
+			System.out.println("Find ID 55:\n" + linkedList.findLink(55).toString());
+		}else {
+			System.out.println("Can't find link with id 55");
+		}
+		System.out.println("Delete Last Link: " + linkedList.deleteLast().toString());
+		displayLinkedList();
+		System.out.println("Insert after Id 88");
+		linkedList.insertAfter(new MyLink(100, 10.9), 88);
+		displayLinkedList();
+		
 	}
 
 	/**
@@ -33,14 +71,64 @@ public class Main{
 	 * Finally, a new link is inserted after a link of user specified linkId and the link is displayed again.
 	 */
 	private static void linkedListBuilderUi() {
+		
+		//print the assignment header first
+		printHeader();
+		
 		//scanner object to get input.
 		Scanner in = new Scanner(System.in);
 		
+		//create the linkedList from user input
 		makeUserLinkedList(in);
 
 		//display the entire linked list
 		displayLinkedList();
+		
+		//find link based on user input
+		findLinkSection(in);
 
+		//delete the last link in list
+		deleteLastLinkSection();
+		
+		//display the entire linked list
+		displayLinkedList();
+		
+		//inserts a new link after user specified link id.
+		insertAfterSection(in);
+
+		//display the entire linked list
+		displayLinkedList();
+
+	}
+	
+	
+	/**
+	 * Asks user for a linkId of which a new link will be inserted after it. User enters values for the new link to be inserted.
+	 * @param in
+	 */
+	private static void insertAfterSection(Scanner in) {
+		System.out.println("\n--------------------\nNow, let's insert a new link. Enter the id of the link you wish to enter the new one after: ");
+
+		int afterId = in.nextInt();
+
+		linkedList.insertAfter(getNewLinkFromUser(in, linkedList.getCounter()), afterId);
+	}
+
+	
+	/**
+	 * Deletes the last link in the list. Displays the data of the deleted link.
+	 */
+	private static void deleteLastLinkSection() {
+		MyLink lastDelete = linkedList.deleteLast();
+		System.out.println("\n--------------------\nDeleting last link\nDeleted the following link: " + lastDelete.toString());
+	}
+	
+	
+	/**
+	 * Asks user to find a link based on linkId entered by the user.
+	 * @param in Scanner object for user input
+	 */
+	private static void findLinkSection(Scanner in) {
 		System.out.println("\n--------------------\nEnter the Id of a link you wish to find: ");
 		int findId = in.nextInt();
 
@@ -51,22 +139,9 @@ public class Main{
 			System.out.println("Link with key Id: " + findId + " not found.");
 		}
 
-		MyLink lastDelete = linkedList.deleteLast();
-		System.out.println("\n--------------------\nDeleting last link\nDeleted the following link: " + lastDelete.toString());
-
-		//display the entire linked list
-		displayLinkedList();
-
-		System.out.println("\n--------------------\nNow, let's insert a new link. Enter the id of the link you wish to enter the new one after: ");
-
-		int afterId = in.nextInt();
-
-		linkedList.insertAfter(getNewLinkFromUser(in, linkedList.getCounter()), afterId);
-		//display the entire linked list
-		System.out.println("\n--------------------\nThe Linked List:\n" + linkedList.displayList());
-
 	}
 
+	
 	/**
 	 * Makes the linked list by asking for user input. Asks user how many links total, then has user enter values for each node.
 	 * @param in Scanner object for getting user input.
@@ -85,6 +160,7 @@ public class Main{
 		}
 	}
 
+	
 	/**
 	 * Gets input from user to create a new link of a linked list.
 	 * @param input Scanner object to read in the values.
@@ -101,6 +177,7 @@ public class Main{
 		return new MyLink(idVal, dataVal);
 	}
 
+	
 	/**
 	 * Displays the linked list to the console window.
 	 */
