@@ -1,4 +1,4 @@
-#Assignment 3 - Self-Implemented Singly Linked List
+# Assignment 3 - Self-Implemented Singly Linked List
 
 A self- implementation of a singly linked list written in java. This program is Assignment 3 for CS-357: Data Structures at Eastern New Mexico University, Spring 2020.
 
