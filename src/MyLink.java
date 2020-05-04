@@ -21,9 +21,10 @@ public class MyLink {
 	/*
 	 * Constructors
 	 */
-	public MyLink(Object data){
+	public MyLink(int linkId, Object data){
 		nextLink = null;
 		this.data = data;
+		this.linkId = linkId;
 	}
 
 	public MyLink(Object data, MyLink nextLink) {

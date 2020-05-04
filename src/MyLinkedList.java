@@ -34,8 +34,12 @@ public class MyLinkedList {
 		this.head = head;
 	}
 
-	public MyLink getHeadlink() {
+	public MyLink getHeadLink() {
 		return this.head;
+	}
+	
+	public int getCounter() {
+		return this.linkCounter;
 	}
 
 	/*
@@ -128,7 +132,7 @@ public class MyLinkedList {
 	 * @param linkId The Id of the link to be found.
 	 * @return The found link in the linked list. If no link is found, returns null.
 	 */
-	public MyLink findlink(int linkId) {
+	public MyLink findLink(int linkId) {
 
 		//check that linked list is not empty
 		if(!isEmpty()) {
@@ -156,11 +160,12 @@ public class MyLinkedList {
 	}
 
 
-	/**
-	 * Deletes the last link in the linked list.
-	 * 
-	 */
-	public void deleteLast() {
+/**
+ * Deletes the last link in the linked list.
+ * 
+ * @return The MyLink object that has been deleted.
+ */
+	public MyLink deleteLast() {
 
 		//check that linked list is not empty
 		if(!isEmpty()){
@@ -172,13 +177,16 @@ public class MyLinkedList {
 
 				//traverse through link
 				MyLink currentlink = head;
+				
+				
 				while(currentlink.getNextLink() != null) {
 
 					if(currentPlace == linkCounter - 1) {
-						//check if at the second to last position to delete nextLink reference
+						//check if at the second to last position in the link to delete nextLink reference
+						MyLink deletedLink = currentlink.getNextLink();
 						currentlink.setNextlink(null);
 						decrementCounter();
-						break;
+						return deletedLink;
 
 					}else {//continue traversing
 						currentlink = currentlink.getNextLink();
@@ -190,10 +198,13 @@ public class MyLinkedList {
 
 			}else {
 				//if the linked list is not greater than two, that means the nextLink reference of the head can be set to null.
+				MyLink deletedLink = head.getNextLink();
 				head.setNextlink(null);
 				decrementCounter();
+				return deletedLink;
 			}
 		}
+		return null;
 	}
 
 	/**
@@ -219,11 +230,13 @@ public class MyLinkedList {
 		String display = "First --> Last: ";
 		//start from beginning link
 		MyLink currentlink = head;
-
+		display += currentlink.toString();
+		
 		//traverse through the link
 		while(currentlink.getNextLink() !=null) {
-			display += currentlink.toString();
+			
 			currentlink = currentlink.getNextLink();
+			display += currentlink.toString();
 		}
 
 		return display;
