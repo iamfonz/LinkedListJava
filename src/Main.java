@@ -1,6 +1,12 @@
 /**
- * Assignment 3
+ * @title Assignment 3 - Linked List
+ * 
  * A self-implementation of a singly linked list.
+ * 
+ * The method linkedListBuilderUi() is the program that runs per the assignment's specs. For quick testing purposes, 
+ * I created some test methods and used the values in the examples of the spec. It made it convenient so that instead of 
+ * having to re-enter the inputs over and over again just to test code here and there. They are at the bottom of this.
+ * They may be ignored/used as needed.
  * 
  * @author Alfonzo Avila
  * @date Spring 2020
@@ -20,47 +26,12 @@ public class Main{
 	public static void main(String[] args) {
 
 		
-		//linkedListBuilderUi();
-		//test1();
-		test2();
+		linkedListBuilderUi();
+
 
 	}
 	
-	private static void test1() {
-		System.out.println("Start of test1 method!");
-		linkedList.insertFirst(new MyLink(11, 1.9));
-		linkedList.insertFirst(new MyLink(22, 2.9));
-		linkedList.insertFirst(new MyLink(33, 3.9));
-		linkedList.insertFirst(new MyLink(44, 4.9));
-		displayLinkedList();
-		System.out.println("Find ID 33:\n" + linkedList.findLink(33).toString());
-		System.out.println("Delete Last Link: " + linkedList.deleteLast().toString());
-		displayLinkedList();
-		System.out.println("Insert after Id 44");
-		linkedList.insertAfter(new MyLink(55, 5.9), 44);
-		displayLinkedList();
-		System.out.println("End of test1 method!");
-		
-	}
 	
-	private static void test2() {
-		System.out.println("Start of test2 method!");
-		linkedList.insertFirst(new MyLink(77, 7.9));
-		linkedList.insertFirst(new MyLink(88, 8.9));
-		linkedList.insertFirst(new MyLink(99, 9.9));
-		displayLinkedList();
-		if(linkedList.findLink(55) != null) {
-			System.out.println("Find ID 55:\n" + linkedList.findLink(55).toString());
-		}else {
-			System.out.println("Can't find link with id 55");
-		}
-		System.out.println("Delete Last Link: " + linkedList.deleteLast().toString());
-		displayLinkedList();
-		System.out.println("Insert after Id 88");
-		linkedList.insertAfter(new MyLink(100, 10.9), 88);
-		displayLinkedList();
-		
-	}
 
 	/**
 	 * Where all the magic happens, per the specs of the assignment. 
@@ -194,5 +165,52 @@ public class Main{
 		System.out.print("Assignment 3\nA self-implementation of a singly linked list.\n\nAlfonzo Avila\nSpring 2020\nCS-357\nDr Cheng\n\n\n");
 	}
 
+	
+	
+	
+	/* 
+	 * TESTING GROUNDS!
+	 */
+	/**
+	 * Testing for example 1 of the assignment spec.
+	 */
+	private static void test1() {
+		System.out.println("Start of test1 method!");
+		linkedList.insertFirst(new MyLink(11, 1.9));
+		linkedList.insertFirst(new MyLink(22, 2.9));
+		linkedList.insertFirst(new MyLink(33, 3.9));
+		linkedList.insertFirst(new MyLink(44, 4.9));
+		displayLinkedList();
+		System.out.println("Find ID 33:\n" + linkedList.findLink(33).toString());
+		System.out.println("Delete Last Link: " + linkedList.deleteLast().toString());
+		displayLinkedList();
+		System.out.println("Insert after Id 44");
+		linkedList.insertAfter(new MyLink(55, 5.9), 44);
+		displayLinkedList();
+		System.out.println("End of test1 method!");
+		
+	}
+	
+	/**
+	 * Testing for example 2 of the assignment spec.
+	 */
+	private static void test2() {
+		System.out.println("Start of test2 method!");
+		linkedList.insertFirst(new MyLink(77, 7.9));
+		linkedList.insertFirst(new MyLink(88, 8.9));
+		linkedList.insertFirst(new MyLink(99, 9.9));
+		displayLinkedList();
+		if(linkedList.findLink(55) != null) {
+			System.out.println("Find ID 55:\n" + linkedList.findLink(55).toString());
+		}else {
+			System.out.println("Can't find link with id 55");
+		}
+		System.out.println("Delete Last Link: " + linkedList.deleteLast().toString());
+		displayLinkedList();
+		System.out.println("Insert after Id 88");
+		linkedList.insertAfter(new MyLink(100, 10.9), 88);
+		displayLinkedList();
+		
+	}
 
 }
