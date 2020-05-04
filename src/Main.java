@@ -125,7 +125,7 @@ public class Main{
 		//enter values for each node
 		for(int i = 0; i < numberOfLinks; i++) {
 
-			linkedList.insert(getNewLinkFromUser(in, i+1));
+			linkedList.insertFirst(getNewLinkFromUser(in, i+1));
 		}
 	}
 
