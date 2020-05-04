@@ -5,8 +5,8 @@
  * 
  * The method linkedListBuilderUi() is the program that runs per the assignment's specs. For quick testing purposes, 
  * I created some test methods and used the values in the examples of the spec. It made it convenient so that instead of 
- * having to re-enter the inputs over and over again just to test code here and there. They are at the bottom of this.
- * They may be ignored/used as needed.
+ * having to re-enter the inputs over and over again just to test code here and there. They are at the bottom of the 
+ * main class. They may be ignored/used as needed.
  * 
  * @author Alfonzo Avila
  * @date Spring 2020
@@ -25,11 +25,8 @@ public class Main{
 	private static MyLinkedList linkedList = new MyLinkedList();
 
 	public static void main(String[] args) {
-
 		
 		linkedListBuilderUi();
-
-
 	}
 	
 	
